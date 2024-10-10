@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JavaScript for Everyone: DOM</title>
+    <style>
+  
+  .year{
+    font-size: 24px;
+    text-align: center;
+  }
+  .completed
+  {
+    background-color: green;
+  }
+  .completed 
+  {
+    background-color: green;
+  }
+  .ongoing
+  {
+    background-color: yellow;
+  }
+  .coming
+  {
+    background-color: red;
+  }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+        <h1>Asabeneh Yetayeh challenges in <span class="year">2020</span></h1>
+        <h2>30DaysOfJavaScript Challenge</h2>
+        <div class="datetime" id="datetime"></div>
+        <ul>
+            <li>30DaysOfPython Challenge Done</li>
+            <li>30DaysOfJavaScript Challenge Ongoing</li>
+            <li>30DaysOfReact Challenge Coming</li>
+            <li>30DaysOfFullStack Challenge Coming</li>
+            <li>30DaysOfDataAnalysis Challenge Coming</li>
+            <li>30DaysOfReactNative Challenge Coming</li>
+            <li>30DaysOfMachineLearning Challenge Coming</li>
+        </ul>
+    </div>
+    <script>
+      //   The year color is changing every 1 second 
+     const yearElement = document.querySelector('.year')
+     const colors = ['red','green','yellow','blue']
+     //function is used to change the color every 1 second 
+     setInterval (()=>{
+      const randomColor = colors[Math.floor(Math.random()*colors.length)]
+      yearElement.style.color = randomColor
+     },1000)
+
+
+    //  The date and time background color is changing every on seconds
+
+     const datetimeElement = document.getElementById('datetime')
+     const backgroundColor = ['red','green','yellow','blue']
+
+     function updateTime ()
+     {
+       const now = new Date()
+       const formattedDateTime = now.toLocaleString() // show the date and time now 
+
+       //date and time in interface
+       datetimeElement.textContent = formattedDateTime
+
+      //choose random background-color
+      const randomBackgroundColor = backgroundColor[Math.floor(Math.random()* backgroundColor.length)]
+      datetimeElement.style.backgroundColor = randomBackgroundColor 
+     }
+
+     setInterval(updateTime,1000)
+
+
+    //Completed challenge has background green
+    function completedMarkCompleted ()
+    {
+      const listItem = document.querySelectorAll('ul li') // choose the card 
+     listItem.forEach(item =>{
+      if( item.textContent.includes('Done')) 
+      {
+        item.classList.add('completed') // Add class .completed if there is word 'Done'
+      }
+     })
+    }
+     setInterval(updateTime,1000) // Call function when page loads
+     completedMarkCompleted()
+
+    // Ongoing challenge has background yellow
+    function completedMarkOngoing ()
+    {
+      const listItem1 = document.querySelectorAll('ul li')
+      listItem1.forEach(item =>{
+        if (item.textContent.includes('Ongoing'))
+      {
+        item.classList.add('ongoing')
+      }
+      })
+    }
+    setInterval(updateTime,1000) // Call function when page loads
+    completedMarkOngoing()
+
+    //Coming challenges have background red
+    function completedMarkComing()
+    {
+      const listItem2 = document.querySelectorAll('ul li')
+      listItem2.forEach(item =>{
+        if (item.textContent.includes('Coming'))
+      {
+        item.classList.add('coming')
+      }
+      })
+    }
+    setInterval(updateTime,1000)
+    completedMarkComing()
+    </script>
+  </body>
+</html>
